@@ -96,6 +96,11 @@ Article by Jason Brownlee: https://machinelearningmastery.com/transfer-learning-
 - We drop the column patient id.
 - We then split the data into training and test data.
 - Now we create a imagegenerator which scales data from 0 to 1, makes a validation split of 0.15.
+- We want the model to generalize the data and not to memorize the data.
+- If error on training data and validation data is going down then the model is able to generalize the data.
+- 3 generators: train generator, test generator, and validation generator.
+- Feed images in batches of 16 to both.
+- We shuffle the images so that the model does not memorize the ordering of images.
 ```
 Found 2839 validated image filenames belonging to 2 classes.
 Found 500 validated image filenames belonging to 2 classes.
@@ -106,5 +111,38 @@ Found 590 validated image filenames belonging to 2 classes.
 basemodel = ResNet50(weights = 'imagenet', include_top = False, input_tensor = Input(shape=(256, 256, 3)))
 basemodel.summary()
 ```
+- Download the model that has been pretrained on imagenet data set.
+- We don't include the dense layer on the end as we will add our own.
+- We can overcome the vanishing gradient problem by having multiple layers stacked on top of each other.
+- We freeze the model weigths.
+- Add an average pooling 2D layer, flatten it, add a dense layer with 256 neurons, and dropout for 30% which removes co-dependecy between layers.
 ![Screenshot (116)](https://user-images.githubusercontent.com/70371572/131225544-60a14ba5-168e-4c28-9e91-aecb823381a3.png)
 ![Screenshot (117)](https://user-images.githubusercontent.com/70371572/131225547-6a107f81-4091-4207-8e65-6f716aee3012.png)
+
+- We compile the model using Adam Optimizer.
+``` model.compile(loss = 'categorical_crossentropy', optimizer='adam', metrics= ["accuracy"])```
+-  We use early stopping to exit training if validation loss is not decreasing even after certain epochs (patience)
+```earlystopping = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=20)```
+
+- Then we save the best model with least validation loss
+```checkpointer = ModelCheckpoint(filepath="classifier-resnet-wei```
+
+- We also save the model architecture to json file for future use
+```
+model_json = model.to_json()
+with open("classifier-resnet-model.json","w") as json_file:
+  json_file.write(model_json)
+```
+
+
+## Part 6. ASSESS TRAINED MODEL PERFORMANCE
+- We open the already saved the architecture. We load the presaved model.
+- Now we feed in the data the model has never seen before 
+```test_predict = model.predict(test_generator, steps = test_generator.n // 16, verbose =1)```
+- As we have a binary classifier model so we can at this stage make out if there is a tumor or not.
+![Screenshot (118)](https://user-images.githubusercontent.com/70371572/131228996-ba211e40-5e73-433e-9774-c8559d77b8bb.png)
+- We are going to compare predicted and actual values of tumour or not.
+- ![Screenshot (119)](https://user-images.githubusercontent.com/70371572/131229000-aab00f22-35ec-424e-9273-106180966aec.png)
+
+- Generate Accuracy score: ```0.9809027777777778```, and Confusion matrix.
+![Screenshot (120)](https://user-images.githubusercontent.com/70371572/131228986-a977dba5-7e21-4dfa-9eab-797b528e4549.png)
