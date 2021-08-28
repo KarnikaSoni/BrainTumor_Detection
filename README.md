@@ -36,4 +36,24 @@ import random
 from google.colab import files #library to upload files to colab notebook
 %matplotlib inline
 ```
+Read data from data_mask.csv into brain_df
 
+### Mask
+- Goal of image segmentation is to understand image at pixel level. It associates each pixel with a certain class. The output produced by image segmentation model is called "mask" of the image.
+- Masks can represented by pixel coordinates, we have flattened the array into 1-D array, we use the index to create the mask.
+
+```
+brain_df.mask_path[1] # Path to the brain MRI image
+brain_df.image_path[1] # Path to the segmentation mask
+```
+
+## Task 3. Perform Data Visualization
+The mask distribution between all images is as follows,
+![Screenshot (103)](https://user-images.githubusercontent.com/70371572/131223912-45985f1e-68b8-48eb-ba6c-8af261e07381.png)
+
+We use the image path to visualise the tumour using gray scale: 
+![Screenshot (104)](https://user-images.githubusercontent.com/70371572/131223956-0c70094c-b2d5-4201-91de-3166e26ff453.png)
+
+Now we divide the images into 2 categories Brain MRI and Mask, see them in a grid layout
+![Screenshot (112)](https://user-images.githubusercontent.com/70371572/131224051-abddc70b-48f9-4805-a487-9334358ad746.png)
+![Screenshot (111)](https://user-images.githubusercontent.com/70371572/131224055-b1563786-183a-48b5-b2db-349ad4831703.png)
