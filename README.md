@@ -55,3 +55,18 @@ The mask distribution between all images is as follows,
 Now we divide the images into 2 categories Brain MRI and Mask, see them in a grid layout
 ![Screenshot (112)](https://user-images.githubusercontent.com/70371572/131224051-abddc70b-48f9-4805-a487-9334358ad746.png)
 ![Screenshot (111)](https://user-images.githubusercontent.com/70371572/131224055-b1563786-183a-48b5-b2db-349ad4831703.png)
+
+## TASK 4. Theory Behind CONVOLUTIONAL NEURAL NETWORKS AND RESNETS
+- The first CNN layers are used to ectract high level general features.
+- The last couple of layers are used to perform classification( on a specific task).
+- Local fields scan the image for simple shapes such as edges/ lines.
+- These edges are picked by subsequent layer to form more complex features.
+- ![Screenshot (113)](https://user-images.githubusercontent.com/70371572/131224222-758b186b-0b79-4c9d-abd6-f5eca6ae5cd1.png)
+
+
+### RESNET(Residual Network)
+
+- As CNNs grow deeper, vanishing gradient tend to occur which negatively impacts performance.
+- Residual Neural Network includes "skip connection" feature that enables training of 152 layers without vanishing Gradient Issue.
+- This is done by identity mapping on top of CNN.
+- ![Screenshot (114)](https://user-images.githubusercontent.com/70371572/131224218-31402017-ca6b-4746-97bc-2af6eccaef3e.png)
