@@ -7,6 +7,8 @@ A project that detects brain Tumors using layered Deep Learning Pipeline to perf
 - The goal is to train a Neural Network to produce pixel-wise mask of the image.
 - Mordern image segmentation techniques are based on deep learning approach which makes use of common architectures such as CNN, FCN.
 - We will use ResUNet architecture to solve the task.
+![Screenshot (101)](https://user-images.githubusercontent.com/70371572/131224250-27d0bf6d-7146-4287-8b7f-45400cafd58c.png)
+
 
 ## TASK 1. Import Libraries & Datasets
 ```
@@ -41,7 +43,7 @@ Read data from data_mask.csv into brain_df
 ### Mask
 - Goal of image segmentation is to understand image at pixel level. It associates each pixel with a certain class. The output produced by image segmentation model is called "mask" of the image.
 - Masks can represented by pixel coordinates, we have flattened the array into 1-D array, we use the index to create the mask.
-
+![Screenshot (102)](https://user-images.githubusercontent.com/70371572/131224305-1517418f-15bd-45dc-bf00-82d058532cf5.png)
 ```
 brain_df.mask_path[1] # Path to the brain MRI image
 brain_df.image_path[1] # Path to the segmentation mask
