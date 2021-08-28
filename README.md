@@ -71,4 +71,40 @@ Now we divide the images into 2 categories Brain MRI and Mask, see them in a gri
 - As CNNs grow deeper, vanishing gradient tend to occur which negatively impacts performance.
 - Residual Neural Network includes "skip connection" feature that enables training of 152 layers without vanishing Gradient Issue.
 - This is done by identity mapping on top of CNN.
-- ![Screenshot (114)](https://user-images.githubusercontent.com/70371572/131224218-31402017-ca6b-4746-97bc-2af6eccaef3e.png)
+![Screenshot (114)](https://user-images.githubusercontent.com/70371572/131224218-31402017-ca6b-4746-97bc-2af6eccaef3e.png)
+
+### Transfer Learning
+- Transfer Learning is a machine learning technique in which a network that has been trained to perform a specific task is being reused(repurposed) as a starting point for another similar task.
+- Transfer learning is widely used since starting from a pretrained models can dramatically reduce the time for computation as compared to if it started from scratch.
+![Screenshot (115)](https://user-images.githubusercontent.com/70371572/131224453-7f05b9c9-e87c-4afd-a501-a04b73793271.png)
+
+Ways to apply transfer learning:
+- Strategy 1: 
+  - Freeze the trained CNN network weights from the first layers.
+  - Only train the newly added dense layers with random weights at initialization.
+- Strategy 2: 
+  - Initialize CNN network with the pre-trained weights.
+  - Retain the entire CNN while setting learning rate to be very small this is critical to ensure that you do not aggressively change the trained weights.
+- Transfer Learning approach:
+  - Provides fast training progress, we don't have to start from scratch using randomly initialized weights.
+  - We can use small training datasets to achieve excellent results.
+
+Excellent Resource on transfer learning by Dipanjan Sarkar: https://towardsdatascience.com/a-comprehensive-hands-on-guide-to-transfer-learning-with-real-world-applications-in-deep-learning-212bf3b2f27a
+Article by Jason Brownlee: https://machinelearningmastery.com/transfer-learning-for-deep-learning/
+
+## TASK 5. Train a CLASSIFIER MODEL to detect if Tumor exists or not
+- We drop the column patient id.
+- We then split the data into training and test data.
+- Now we create a imagegenerator which scales data from 0 to 1, makes a validation split of 0.15.
+```
+Found 2839 validated image filenames belonging to 2 classes.
+Found 500 validated image filenames belonging to 2 classes.
+Found 590 validated image filenames belonging to 2 classes.
+```
+- We get the ResNet50 base model by
+```
+basemodel = ResNet50(weights = 'imagenet', include_top = False, input_tensor = Input(shape=(256, 256, 3)))
+basemodel.summary()
+```
+![Screenshot (116)](https://user-images.githubusercontent.com/70371572/131225544-60a14ba5-168e-4c28-9e91-aecb823381a3.png)
+![Screenshot (117)](https://user-images.githubusercontent.com/70371572/131225547-6a107f81-4091-4207-8e65-6f716aee3012.png)
