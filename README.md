@@ -135,14 +135,27 @@ with open("classifier-resnet-model.json","w") as json_file:
 ```
 
 
-## Part 6. ASSESS TRAINED MODEL PERFORMANCE
+### ASSESS TRAINED MODEL PERFORMANCE
 - We open the already saved the architecture. We load the presaved model.
 - Now we feed in the data the model has never seen before 
 ```test_predict = model.predict(test_generator, steps = test_generator.n // 16, verbose =1)```
 - As we have a binary classifier model so we can at this stage make out if there is a tumor or not.
 ![Screenshot (118)](https://user-images.githubusercontent.com/70371572/131228996-ba211e40-5e73-433e-9774-c8559d77b8bb.png)
+![Screenshot (119)](https://user-images.githubusercontent.com/70371572/131229000-aab00f22-35ec-424e-9273-106180966aec.png)
 - We are going to compare predicted and actual values of tumour or not.
-- ![Screenshot (119)](https://user-images.githubusercontent.com/70371572/131229000-aab00f22-35ec-424e-9273-106180966aec.png)
-
 - Generate Accuracy score: ```0.9809027777777778```, and Confusion matrix.
 ![Screenshot (120)](https://user-images.githubusercontent.com/70371572/131228986-a977dba5-7e21-4dfa-9eab-797b528e4549.png)
+
+## Part 6. THeory behind the ResUNet Models
+
+RESUNET
+- ResUNet architecture combines UNet backbone architecture with residual blocks to overcome the vanishing gradients problem present in deep architectures.
+- Unet architecture is based on Fully Convolutional Networks and modified in a way that it performs well on segmentation tasks.
+- Resunet consists of 3 parts:
+  - Encoder
+  - Bottleneck
+  - Decoder
+
+![Screenshot (121)](https://user-images.githubusercontent.com/70371572/131229498-9b517a01-f020-4cce-a921-2b3cb0527ce4.png)
+![Screenshot (122)](https://user-images.githubusercontent.com/70371572/131229507-6f4f6ea7-7a9e-42ec-9755-168027d4e3b7.png)
+![Screenshot (123)](https://user-images.githubusercontent.com/70371572/131229513-b18e9745-ec2e-4d67-ab59-af3a50a468db.png)
