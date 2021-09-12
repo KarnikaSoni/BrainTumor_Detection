@@ -24,6 +24,7 @@ import random
 brain_df = pd.read_csv('../input/healthcareai/Healthcare AI Datasets/Brain_MRI/data_mask.csv')
 brain_df
 
+
 brain_df['mask'].value_counts()
 brain_df['mask'].value_counts().index
 import plotly.graph_objects as go
