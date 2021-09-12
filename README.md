@@ -5,7 +5,7 @@ A project that detects brain Tumors using layered Deep Learning Pipeline to perf
 - Goal of image segmentation is to understand and extract information from images at the pixel level. 
 - Image Segmentation can be used for object recognition and localization which offers tremendous value in many applications such as medical imaging and self driving cars. 
 - The goal is to train a Neural Network to produce pixel-wise mask of the image.
-- Mordern image segmentation techniques are based on deep learning approach which makes use of common architectures such as CNN, FCN.
+- Modern image segmentation techniques are based on deep learning approach which makes use of common architectures such as CNN, FCN.
 - We will use ResUNet architecture to solve the task.
 ![Screenshot (101)](https://user-images.githubusercontent.com/70371572/131224250-27d0bf6d-7146-4287-8b7f-45400cafd58c.png)
 
