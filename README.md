@@ -146,7 +146,7 @@ with open("classifier-resnet-model.json","w") as json_file:
 - Generate Accuracy score: ```0.9809027777777778```, and Confusion matrix.
 ![Screenshot (120)](https://user-images.githubusercontent.com/70371572/131228986-a977dba5-7e21-4dfa-9eab-797b528e4549.png)
 
-## Part 6. THeory behind the ResUNet Models
+## Part 6. Theory behind the ResUNet Models
 
 RESUNET
 - ResUNet architecture combines UNet backbone architecture with residual blocks to overcome the vanishing gradients problem present in deep architectures.
