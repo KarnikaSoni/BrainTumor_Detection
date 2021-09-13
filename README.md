@@ -59,7 +59,7 @@ Now we divide the images into 2 categories Brain MRI and Mask, see them in a gri
 ![Screenshot (111)](https://user-images.githubusercontent.com/70371572/131224055-b1563786-183a-48b5-b2db-349ad4831703.png)
 
 ## TASK 4. Theory Behind CONVOLUTIONAL NEURAL NETWORKS AND RESNETS
-- The first CNN layers are used to ectract high level general features.
+- The first CNN layers are used to extract high level general features.
 - The last couple of layers are used to perform classification( on a specific task).
 - Local fields scan the image for simple shapes such as edges/ lines.
 - These edges are picked by subsequent layer to form more complex features.
