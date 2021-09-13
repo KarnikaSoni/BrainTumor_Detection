@@ -182,4 +182,4 @@ We need a custom loss function to train this ResUNet.So, we have used the loss f
 ![Screenshot (125)](https://user-images.githubusercontent.com/70371572/131230302-f295112d-d4bc-4477-b9be-5c29be8fb100.png)
 
 As we can see the predicted masks for tumor is very close to the actual tumor location. Therefore this model was successful in detecting and predicting tumors in brain.
-Note: This project was with help of online Udemy course.
+Note: This project was made with help of online Udemy course.
